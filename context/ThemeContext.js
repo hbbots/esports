@@ -1,13 +1,21 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+<<<<<<< HEAD
 
 import { createContext, useEffect, useState } from 'react';
+=======
+import React, { createContext, useEffect, useState } from 'react';
+>>>>>>> 608141fa4b5cc12423271228ad3a57c4572997bd
 import { useColorScheme } from 'react-native';
 
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const systemTheme = useColorScheme();
+<<<<<<< HEAD
   // console.log(systemTheme)
+=======
+  console.log(systemTheme)
+>>>>>>> 608141fa4b5cc12423271228ad3a57c4572997bd
   const [theme, setTheme] = useState(systemTheme || 'light');
 
   // Load saved theme on first load
@@ -25,6 +33,7 @@ export const ThemeProvider = ({ children }) => {
     await AsyncStorage.setItem('appTheme', newTheme);
   };
 
+<<<<<<< HEAD
 const tintColorLight = '#0a7ea4';
 const tintColorDark = '#fff';
 
@@ -76,6 +85,24 @@ dark: {
   verifiedColor: '#00f700ff',
 },
 
+=======
+  // Theme color definitions
+  const themeColors = {
+    light: {
+      background: '#FFFFFF',
+      text: '#000000',
+      card: '#F5F5F5',
+      border: '#E0E0E0',
+      
+    },
+    dark: {
+      background: '#121212',
+      text: '#FFFFFF',
+      card: '#1F1F1F',
+      border: '#333333',
+     
+    },
+>>>>>>> 608141fa4b5cc12423271228ad3a57c4572997bd
   };
 
   // Select current theme style

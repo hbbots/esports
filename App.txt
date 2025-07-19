@@ -1,0 +1,30 @@
+// // App.js
+
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// import Chat from '../screen/Chat';
+
+
+
+
+// import Home from './home';
+
+
+
+// const Stack = createNativeStackNavigator();
+
+// export default function App() {
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator initialRouteName="Home">
+//         <Stack.Screen name="Home" component={Home} />
+//         <Stack.Screen name="Chat" component={Chat} />
+
+
+
+
+
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );
+// }
