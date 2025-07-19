@@ -1,0 +1,7 @@
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+npx create-expo-app@latest
+cd my-app
+npm start
+
+npx expo install @react-native-async-storage/async-storage
+
