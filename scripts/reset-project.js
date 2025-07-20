@@ -2,11 +2,8 @@
 
 /**
  * This script is used to reset the project to a blank state.
-<<<<<<< HEAD
- * It deletes or moves the /app, /components, /hooks, /scripts, and /constants directories to /app-example based on user input and creates a new /app directory with an index.tsx and _ file.
-=======
- * It deletes or moves the /app, /components, /hooks, /scripts, and /constants directories to /app-example based on user input and creates a new /app directory with an index.tsx and _layout.tsx file.
->>>>>>> 608141fa4b5cc12423271228ad3a57c4572997bd
+ * It deletes or moves the /app, /components, /hooks, /scripts, and /constants directories to /app-example based on user input
+ * and creates a new /app directory with an index.tsx and _layout.tsx file.
  * You can remove the `reset-project` script from package.json and safely delete this file after running it.
  */
 
@@ -62,7 +59,7 @@ const moveDirectories = async (userInput) => {
       const oldDirPath = path.join(root, dir);
       if (fs.existsSync(oldDirPath)) {
         if (userInput === "y") {
-          const newDirPath = path.join(root, exampleDir, dir);
+          const newDirPath = path.join(exampleDirPath, dir);
           await fs.promises.rename(oldDirPath, newDirPath);
           console.log(`➡️ /${dir} moved to /${exampleDir}/${dir}.`);
         } else {
@@ -70,7 +67,7 @@ const moveDirectories = async (userInput) => {
           console.log(`❌ /${dir} deleted.`);
         }
       } else {
-        console.log(`➡️ /${dir} does not exist, skipping.`);
+        console.log(`ℹ️ /${dir} does not exist, skipping.`);
       }
     }
 
@@ -84,17 +81,10 @@ const moveDirectories = async (userInput) => {
     await fs.promises.writeFile(indexPath, indexContent);
     console.log("📄 app/index.tsx created.");
 
-<<<<<<< HEAD
-    // Create _
-    const layoutPath = path.join(newAppDirPath, "_");
-    await fs.promises.writeFile(layoutPath, layoutContent);
-    console.log("📄 app/_ created.");
-=======
     // Create _layout.tsx
     const layoutPath = path.join(newAppDirPath, "_layout.tsx");
     await fs.promises.writeFile(layoutPath, layoutContent);
     console.log("📄 app/_layout.tsx created.");
->>>>>>> 608141fa4b5cc12423271228ad3a57c4572997bd
 
     console.log("\n✅ Project reset complete. Next steps:");
     console.log(
