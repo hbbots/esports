@@ -36,7 +36,6 @@ Firebase (Auth + Firestore)
 
 React Context API for global theming
 
-Shadcn-style components (if applicable)
 
 TypeScript
 
