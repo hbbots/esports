@@ -1,0 +1,28 @@
+# Ignore node modules
+node_modules
+
+# Temp & cache
+AppData
+*.tmp
+*.log
+*.ldb
+metro-cache
+.expo
+.expo-shared
+dist
+web-build
+
+# macOS
+.DS_Store
+
+# Credentials / Security
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Others
+.vscode
+.env*
+*.tsbuildinfo

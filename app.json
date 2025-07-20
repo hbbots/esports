@@ -1,20 +1,11 @@
 {
   "expo": {
-<<<<<<< HEAD
-    "name": "basic",
-    "slug": "basic",
+    "name": "Hb esports",
+    "slug": "esports",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "basic",
-=======
-    "name": "chat",
-    "slug": "chat",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "chat",
->>>>>>> 608141fa4b5cc12423271228ad3a57c4572997bd
+    "icon": "./assets/images/hb.jpg",
+    "scheme": "esports",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -25,12 +16,8 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-<<<<<<< HEAD
       "edgeToEdgeEnabled": true,
-      "package": "com.amalhb.basic"
-=======
-      "edgeToEdgeEnabled": true
->>>>>>> 608141fa4b5cc12423271228ad3a57c4572997bd
+      "package": "com.amalhb.esports"
     },
     "web": {
       "bundler": "metro",
@@ -42,11 +29,10 @@
       [
         "expo-splash-screen",
         {
-<<<<<<< HEAD
-          "image": "./assets/images/user.jpg",
+          "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "red"
+          "backgroundColor": "#ffffff"
         }
       ],
       "expo-font"
@@ -57,19 +43,8 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "6613991e-1921-4289-8933-f1ffc5bd653d"
+        "projectId": "c9657263-caea-495e-86da-3b829b3c0a72"
       }
-=======
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
-        }
-      ]
-    ],
-    "experiments": {
-      "typedRoutes": true
->>>>>>> 608141fa4b5cc12423271228ad3a57c4572997bd
     }
   }
 }
