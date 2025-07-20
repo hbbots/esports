@@ -1,24 +1,14 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-<<<<<<< HEAD
-
-import { createContext, useEffect, useState } from 'react';
-=======
 import React, { createContext, useEffect, useState } from 'react';
->>>>>>> 608141fa4b5cc12423271228ad3a57c4572997bd
 import { useColorScheme } from 'react-native';
 
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const systemTheme = useColorScheme();
-<<<<<<< HEAD
-  // console.log(systemTheme)
-=======
-  console.log(systemTheme)
->>>>>>> 608141fa4b5cc12423271228ad3a57c4572997bd
   const [theme, setTheme] = useState(systemTheme || 'light');
 
-  // Load saved theme on first load
+  // Load saved theme on mount
   useEffect(() => {
     (async () => {
       const savedTheme = await AsyncStorage.getItem('appTheme');
@@ -26,20 +16,18 @@ export const ThemeProvider = ({ children }) => {
     })();
   }, []);
 
-  // Toggle light/dark mode
+  // Toggle between light and dark mode
   const toggleTheme = async () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     await AsyncStorage.setItem('appTheme', newTheme);
   };
 
-<<<<<<< HEAD
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+  const tintColorLight = '#0a7ea4';
+  const tintColorDark = '#fff';
 
-  // Theme color definitions
   const themeColors = {
-     light: {
+    light: {
       text: '#1a1a1a',
       background: '#f2f2f2',
       tint: tintColorLight,
@@ -52,60 +40,35 @@ const tintColorDark = '#fff';
       input: '#F5F5F5',
       inputtext: '#333333',
       borderin: '#2C2C2C',
-    
-   detailsColor: '#fc0093ff',
-maxPlayersColor: '#00695C',
-prizeColor: '#F57C00',
-feeColor: '#F57C00',
-dateColor: '#D84315',
-verifiedColor: '#388E3C',
-
-    },
-    
-dark: {
-  text: '#f5f5f5',
-  background: '#121212',
-  tint: '#ffffff',
-  icon: '#ffffff',
-  tabIconDefault: '#616b75',
-  tabIconSelected: '#00bcd4',
-  card: '#1E1E1E',
-  border: '#2c2c2e',
-  common: '#FF6347',
-
-  input: '#1E1E1E',        // ✅ fixed input background
-  inputtext: '#f5f5f5',    // ✅ fixed input text color
-  borderin: '#3a3a3a',     // ✅ fixed border color
-
-  detailsColor: '#06fab9ff',
-  maxPlayersColor: '#fa066cff',
-  prizeColor: '#FFD700',
-  feeColor: '#FFD700',
-  dateColor: '#00fff2ff',
-  verifiedColor: '#00f700ff',
-},
-
-=======
-  // Theme color definitions
-  const themeColors = {
-    light: {
-      background: '#FFFFFF',
-      text: '#000000',
-      card: '#F5F5F5',
-      border: '#E0E0E0',
-      
+      detailsColor: '#fc0093ff',
+      maxPlayersColor: '#00695C',
+      prizeColor: '#F57C00',
+      feeColor: '#F57C00',
+      dateColor: '#D84315',
+      verifiedColor: '#388E3C',
     },
     dark: {
+      text: '#f5f5f5',
       background: '#121212',
-      text: '#FFFFFF',
-      card: '#1F1F1F',
-      border: '#333333',
-     
+      tint: tintColorDark,
+      icon: '#ffffff',
+      tabIconDefault: '#616b75',
+      tabIconSelected: '#00bcd4',
+      card: '#1E1E1E',
+      border: '#2c2c2e',
+      common: '#FF6347',
+      input: '#1E1E1E',
+      inputtext: '#f5f5f5',
+      borderin: '#3a3a3a',
+      detailsColor: '#06fab9ff',
+      maxPlayersColor: '#fa066cff',
+      prizeColor: '#FFD700',
+      feeColor: '#FFD700',
+      dateColor: '#00fff2ff',
+      verifiedColor: '#00f700ff',
     },
->>>>>>> 608141fa4b5cc12423271228ad3a57c4572997bd
   };
 
-  // Select current theme style
   const themeStyles = themeColors[theme];
 
   return (
