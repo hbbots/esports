@@ -1,7 +1,8 @@
-<<<<<<< HEAD
 // app/_layout.tsx
 import { ThemeProvider } from '@/context/ThemeContext';
+import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { Image, useColorScheme, View } from 'react-native';
@@ -13,13 +14,16 @@ export default function RootLayout() {
   const [progress, setProgress] = useState(0);
   const scheme = useColorScheme();
 
-  const splashImage = scheme === 'dark'
-     ? require('../assets/images/hb.jpg') // 🌙 Add your dark splash image here
-   : require('../assets/images/hb.jpg'); // ☀️ Add your light splash image here
-  
-       
+  const [fontsLoaded] = useFonts({
+    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+  });
 
-  // Fake animated progress bar
+  const splashImage =
+    scheme === 'dark'
+      ? require('../assets/images/hb.jpg') // 🌙 dark splash
+      : require('../assets/images/hb.jpg'); // ☀️ light splash
+
+  // Fake loading progress bar animation
   useEffect(() => {
     let interval: any;
     if (isLoggedIn === null) {
@@ -39,12 +43,11 @@ export default function RootLayout() {
       setIsLoggedIn(!!user);
       console.log('User is', user ? 'logged in' : 'logged out');
     });
-
     return unsubscribe;
   }, []);
 
-  // Show splash screen with image and progress bar
-  if (isLoggedIn === null) {
+  // Show splash screen while loading
+  if (isLoggedIn === null || !fontsLoaded) {
     return (
       <View
         style={{
@@ -85,61 +88,7 @@ export default function RootLayout() {
           </>
         )}
       </Stack>
-=======
-
-
-
-import { useColorScheme } from '@/hooks/useColorScheme';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  if (!loaded) return null;
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="(screens)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
       <StatusBar style="auto" />
->>>>>>> 608141fa4b5cc12423271228ad3a57c4572997bd
     </ThemeProvider>
   );
 }
-
-
-
-<<<<<<< HEAD
-=======
-// // app/_layout.tsx
-// import { useColorScheme } from '@/hooks/useColorScheme';
-// import { DarkTheme, DefaultTheme, ThemeProvider as NavThemeProvider } from '@react-navigation/native';
-// import { Stack } from 'expo-router';
-// import { StatusBar } from 'expo-status-bar';
-
-// export default function RootLayout() {
-//   const colorScheme = useColorScheme();
-
-//   return (
-//     <NavThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-//       <Stack>
-//         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-//         <Stack.Screen name="(screens)" options={{ headerShown: false }} />
-//         <Stack.Screen name="+not-found" />
-//       </Stack>
-//       <StatusBar style="auto" />
-//     </NavThemeProvider>
-//   );
-// }
-
-
->>>>>>> 608141fa4b5cc12423271228ad3a57c4572997bd
