@@ -1,4 +1,4 @@
-**# Open Source Project 
+# Open Source Project 
 🏆 Tournament App
 
 A sleek and modern React Native app built with Expo Router, allowing users to browse, join, and create game tournaments. Supports real-time data via Firebase, light/dark themes, and user authentication.
@@ -108,4 +108,4 @@ Please open an issue first for any major changes.
 
 
 ---
-**
+
