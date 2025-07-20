@@ -71,25 +71,7 @@ Replace firebaseConfig in /firebaseConfig.ts with your own credentials
 
 ---
 
-📂 Project Structure
-
-app/
-  ├── (tabs)/           // Bottom tab screens
-  │   ├── Home.tsx
-  │   ├── Profile.tsx
-  │   ├── Settings.tsx
-  ├── games/
-  │   ├── index.tsx     // Game list
-  │   └── [game].tsx    // Tournaments by game
-  ├── tournament/
-  │   └── [id].tsx      // Tournament detail page
-  ├── CreateTournament.tsx
-  ├── Login.tsx
-  └── Register.tsx
-firebaseConfig.ts
-context/
-  └── ThemeContext.tsx
-
+<pre> ```plaintext 📂 Project Structure app/ ├── (tabs)/ // Bottom tab screens │ ├── Home.tsx │ ├── Profile.tsx │ ├── Settings.tsx ├── games/ │ ├── index.tsx // Game list │ └── [game].tsx // Tournaments by game ├── tournament/ │ └── [id].tsx // Tournament detail page ├── CreateTournament.tsx ├── Login.tsx └── Register.tsx firebaseConfig.ts context/ └── ThemeContext.tsx ``` </pre>
 
 ---
 
