@@ -18,8 +18,8 @@ export default function Layout() {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'Profile') {
             iconName = focused ? 'person' : 'person-outline';
-          } else if (route.name === 'Settings') {
-            iconName = focused ? 'settings' : 'settings-outline';
+          // } else if (route.name === 'Settings') {
+          //   iconName = focused ? 'settings' : 'settings-outline';
           }
 
           return <Ionicons name={iconName} size={24} color={color} />;
@@ -31,7 +31,7 @@ export default function Layout() {
     >
       <Tabs.Screen name="Home" />
       <Tabs.Screen name="Profile" />
-      <Tabs.Screen name="Settings" />
+      {/* <Tabs.Screen name="Settings" /> */}
     </Tabs>
     </ThemeProvider>
   );

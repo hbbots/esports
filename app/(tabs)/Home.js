@@ -1,15 +1,17 @@
 import { ThemeContext } from '@/context/ThemeContext';
+import { db } from '@/firebaseConfig';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { useContext, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { useContext, useEffect, useState } from 'react';
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -62,10 +64,39 @@ export default function GameHomeScreen() {
   const router = useRouter();
   const { themeStyles } = useContext(ThemeContext);
   const [searchQuery, setSearchQuery] = useState('');
+  const [featuredTournament, setFeaturedTournament] = useState(null);
 
   const filteredGames = allGames.filter((game) =>
     game.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  useEffect(() => {
+    const fetchRandomTournament = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'tournaments'));
+        const tournaments = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        if (tournaments.length > 0) {
+          const randomIndex = Math.floor(Math.random() * tournaments.length);
+          setFeaturedTournament(tournaments[randomIndex]);
+        }
+      } catch (error) {
+        console.error('Error fetching tournaments:', error);
+      }
+    };
+
+    fetchRandomTournament();
+  }, []);
+
+  // Find image from allGames based on the game name
+  const featuredImage = featuredTournament
+    ? allGames.find(
+        (g) =>
+          g.game.toLowerCase().trim() === featuredTournament.game?.toLowerCase().trim()
+      )?.image
+    : null;
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: themeStyles.background }}>
@@ -115,7 +146,7 @@ export default function GameHomeScreen() {
                     id: game.id,
                     title: game.title,
                     image: game.image,
-                    game: game.game, // ✅ send proper game key
+                    game: game.game,
                   },
                 })
               }
@@ -126,57 +157,58 @@ export default function GameHomeScreen() {
           ))}
         </ScrollView>
 
-<View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: themeStyles.text }]}>🔥 Featured Tournament</Text>
-        <View style={[styles.featureCard, { backgroundColor: themeStyles.card }]}>
-          <Image
-            source={{
-              uri: 'https://tournova.games/blog/files/uploads/2024/11/Top-esports-games-mobile.-5.webp',
-            }}
-            style={styles.featureImage}
-          />
-          <View style={styles.featureContent}>
-            <Text style={[styles.featureTitle, { color: themeStyles.text }]}>Free Fire Showdown</Text>
-            <Text style={[styles.featureDetails, { color: themeStyles.text }]}>
-              Prize: ₹10,000 • Entry: ₹50
-            </Text>
-            <TouchableOpacity style={[styles.joinBtn, { backgroundColor: themeStyles.common}]}>
-              <Text style={{ color: themeStyles.background, fontWeight: '600' }}>Join Now</Text>
-            </TouchableOpacity>
+        {featuredTournament && (
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: themeStyles.text }]}>🔥 Featured Tournament</Text>
+            <View style={[styles.featureCard, { backgroundColor: themeStyles.card }]}>
+              <Image
+                source={{ uri: featuredImage || 'https://via.placeholder.com/120' }}
+                style={styles.featureImage}
+              />
+              <View style={styles.featureContent}>
+                <Text style={[styles.featureTitle, { color: themeStyles.text }]}>
+                  {featuredTournament.title}
+                </Text>
+                <Text style={[styles.featureDetails, { color: themeStyles.text }]}>
+                  Prize: ₹{featuredTournament.prize} • Entry: ₹{featuredTournament.fee}
+                </Text>
+                <TouchableOpacity
+                  style={[styles.joinBtn, { backgroundColor: themeStyles.common }]}
+                  onPress={() => router.push(`/tournament/${featuredTournament.id}`)}
+                >
+                  <Text style={{ color: themeStyles.background, fontWeight: '600' }}>Join Now</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
           </View>
-        </View>
-      </View>
+        )}
 
-      <View style={styles.buttons}>
-        <TouchableOpacity
-          style={[
-            styles.primaryBtn,
-            {
-             backgroundColor: '#0a84ff',
-             borderColor: themeStyles.text,
-             borderWidth: 1,
-            },
-          ]}
-           onPress={() => router.push('/CreateTournament')}
-        >
-          <Text style={[styles.btnText, 
-            { color: themeStyles.text }]}>🏆 Create Tournament</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[
-            styles.secondaryBtn,
-            {
-              backgroundColor: themeStyles.common,
-              borderColor: themeStyles.text,
-            },
-          ]}
-        
-        >
-          
-          <Text style={[styles.btnText, { color: themeStyles.text }]}>📄 My Tournaments</Text>
-        </TouchableOpacity>
-      </View>
-        {/* You can keep your Featured section or buttons here */}
+        <View style={styles.buttons}>
+          <TouchableOpacity
+            style={[
+              styles.primaryBtn,
+              {
+                backgroundColor: '#0a84ff',
+                borderColor: themeStyles.text,
+                borderWidth: 1,
+              },
+            ]}
+            onPress={() => router.push('/CreateTournament')}
+          >
+            <Text style={[styles.btnText, { color: themeStyles.text }]}>🏆 Create Tournament</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[
+              styles.secondaryBtn,
+              {
+                backgroundColor: themeStyles.common,
+                borderColor: themeStyles.text,
+              },
+            ]}
+          >
+            <Text style={[styles.btnText, { color: themeStyles.text }]}>📄 My Tournaments</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -223,25 +255,40 @@ const styles = StyleSheet.create({
     padding: 5,
     fontWeight: 'bold',
   },
-
-    sectionTitle: { color: '#fff', fontSize: 20, marginBottom: 10 },
+  section: {
+    marginBottom: 25,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    marginBottom: 10,
+  },
   featureCard: {
     flexDirection: 'row',
-    backgroundColor: '#2c2c2e',
     borderRadius: 15,
     overflow: 'hidden',
   },
-  featureImage: { width: 120, height: 120 },
-  featureContent: { padding: 10, flex: 1 },
-  featureTitle: { color: '#fff', fontSize: 18, fontWeight: 'bold' },
-  featureDetails: { color: '#ccc', marginVertical: 5 },
-    joinBtn: {
-    backgroundColor: '#ff4c29',
+  featureImage: {
+    width: 160,
+    height: 120,
+  },
+  featureContent: {
+    padding: 10,
+    flex: 1,
+  },
+  featureTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  featureDetails: {
+    marginVertical: 6,
+    fontWeight:"bold",
+
+  },
+  joinBtn: {
     padding: 8,
     borderRadius: 8,
     alignSelf: 'flex-start',
   },
-  joinText: { color: '#fff', fontWeight: 'bold' },
   buttons: {
     marginTop: 25,
     gap: 12,
@@ -259,7 +306,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   btnText: {
-    color: '#fff',
     fontWeight: '600',
     fontSize: 16,
   },
