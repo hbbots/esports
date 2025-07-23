@@ -23,10 +23,12 @@ const genders = ['👨 Male', '👩 Female', '🏳️‍🌈 Other'];
 const RegistrationScreen = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] =useState('')
   const [gender, setGender] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  
 
   const handleRegister = async () => {
   if (!fullName) {
@@ -38,6 +40,10 @@ const RegistrationScreen = () => {
   } else if (!gender) {
     setError("ADD GENDER");
     return;
+
+  }  else if(!phone) {
+      setError("Please Enter Phone Number")
+      return;
   } else if (!password) {
     setError("PLEASE ENTER PASSWORD");
     return;
@@ -61,6 +67,7 @@ const RegistrationScreen = () => {
     setPassword('');
     setConfirmPassword('');
     setGender('');
+    setPhone('')
 
     // ✅ NO NEED for manual navigation here — let auth listener handle screen change
   } catch (err) {
@@ -76,6 +83,7 @@ const RegistrationScreen = () => {
     }
   }
 };
+
 
   return (
 
@@ -114,8 +122,17 @@ const RegistrationScreen = () => {
         autoCapitalize="none"
       />
       </View>
-
-
+ <View style={styles.inputWrapper}>
+      <Ionicons name="call-outline" size={20} color="#666" style={styles.icon} />
+      
+      <TextInput
+      style={styles.input}
+      placeholder='Phone'
+      value={phone}
+      onChangeText={setPhone}
+      keyboardType="phone-pad"
+      />
+</View>
       <Text style={styles.label}>Gender</Text>
       <View style={styles.genderContainer}>
         {genders.map((item) => (
