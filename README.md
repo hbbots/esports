@@ -31,7 +31,7 @@ A sleek and modern React Native app built with Expo Router, allowing users to br
 
 | Home Screen | Dark Mode | Tournament List |
 |-------------|-----------|-----------------|
-| ![Home](https://github.com/hbbots/esports/blob/main/DEMO/home.png?raw=true) | ![Dark](https://github.com/hbbots/esports/blob/main/DEMO/dark.png?raw=true) | ![Tournaments](https://github.com/hbbots/esports/blob/main/DEMO/tournaments.png?raw=true) |
+| ![Home](https://github.com/hbbots/esports/blob/main/DEMO/home.png?raw=true) | ![Light Mode](https://github.com/hbbots/esports/blob/main/DEMO//White%20Mode.png?raw=true) | ![Tournaments](https://github.com/hbbots/esports/blob/main/DEMO/tournaments.png?raw=true) |
 
 | Tournament Details | Create Tournament | Profile |
 |--------------------|-------------------|---------|
