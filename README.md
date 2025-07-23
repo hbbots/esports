@@ -16,7 +16,6 @@ A sleek and modern React Native app built with Expo Router, allowing users to br
 
 🧑‍💼 Create and manage tournaments
 
-👥 Join tournaments and request approval
 
 📦 Firebase Firestore database
 
@@ -27,6 +26,19 @@ A sleek and modern React Native app built with Expo Router, allowing users to br
 
 
 ---
+
+## 📸 App Screenshots
+
+| Home Screen | Dark Mode | Tournament List |
+|-------------|-----------|-----------------|
+| ![Home](https://github.com/hbbots/esports/blob/main/DEMO/home.png?raw=true) | ![Dark](https://github.com/hbbots/esports/blob/main/DEMO/dark.png?raw=true) | ![Tournaments](https://github.com/hbbots/esports/blob/main/DEMO/tournaments.png?raw=true) |
+
+| Tournament Details | Create Tournament | Profile |
+|--------------------|-------------------|---------|
+| ![Details](https://github.com/hbbots/esports/blob/main/DEMO/detail.png?raw=true) | ![Create](https://github.com/hbbots/esports/blob/main/DEMO/create.png?raw=true) | ![Profile](https://github.com/hbbots/esports/blob/main/DEMO/profile.png?raw=true) |
+
+---
+
 
 🛠️ Tech Stack
 
