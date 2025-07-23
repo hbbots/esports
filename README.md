@@ -16,7 +16,6 @@ A sleek and modern React Native app built with Expo Router, allowing users to br
 
 🧑‍💼 Create and manage tournaments
 
-
 📦 Firebase Firestore database
 
 ⚡ Real-time updates
@@ -26,16 +25,6 @@ A sleek and modern React Native app built with Expo Router, allowing users to br
 
 
 ---
-
-## 📸 App Screenshots
-
-| Home Screen | Dark Mode | Tournament List |
-|-------------|-----------|-----------------|
-| ![Home](https://github.com/hbbots/esports/blob/main/DEMO/home.png?raw=true) | ![Light Mode](https://github.com/hbbots/esports/blob/main/DEMO//White%20Mode.png?raw=true) | ![Tournaments](https://github.com/hbbots/esports/blob/main/DEMO/tournaments.png?raw=true) |
-
-| Tournament Details | Create Tournament | Profile |
-|--------------------|-------------------|---------|
-| ![Details](https://github.com/hbbots/esports/blob/main/DEMO/detail.png?raw=true) | ![Create](https://github.com/hbbots/esports/blob/main/DEMO/create.png?raw=true) | ![Profile](https://github.com/hbbots/esports/blob/main/DEMO/profile.png?raw=true) |
 
 ---
 
@@ -51,6 +40,39 @@ React Context API for global theming
 
 TypeScript
 
+
+---
+
+## 📸 App Screenshots
+
+| Splash Screen | White Mode | Search |
+|-------------|-----------|-----------------|
+| ![Splash](https://github.com/hbbots/esports/blob/main/DEMO/Splash%20Screen.png?raw=true) | ![Light Mode](https://github.com/hbbots/esports/blob/main/DEMO/White%20Mode%20(2).png?raw=true) | ![Search](https://github.com/hbbots/esports/blob/main/DEMO/Search.png?raw=true) |
+
+| Create Tournamnt  |Delete Tournament  | My Tournaments |
+|--------------------|-------------------|---------|
+| ![Create ](https://github.com/hbbots/esports/blob/main/DEMO/Create%20Tournament%20Page.png?raw=true) | ![Delete](https://github.com/hbbots/esports/blob/main/DEMO/Delete%20Tournament%20Page.png?raw=true) | ![My Tournaments](https://github.com/hbbots/esports/blob/main/DEMO/Mytournaments.png?raw=true) | 
+
+| Login | Register  | Settings |
+|--------------------|-------------------|---------|
+| ![Login](https://github.com/hbbots/esports/blob/main/DEMO/Login.png?raw=true) | ![Register](https://github.com/hbbots/esports/blob/main/DEMO/Register.png?raw=true) | ![Profile](https://github.com/hbbots/esports/blob/main/DEMO/White%20Mode.png?raw=true) |
+
+| Tournament List  | Tournament Details |  Privacy&Policy |
+|-------------|-----------|-----------------|
+| ![Tournament List](https://github.com/hbbots/esports/blob/main/DEMO/Tournaments%20list.png?raw=true) | ![Details](https://github.com/hbbots/esports/blob/main/DEMO/Tournaments%20detaisl%20page.png?raw=true) | ![Privacy & Policy ](https://github.com/hbbots/esports/blob/main/DEMO/Privacy%20%26%20POLICY.png?raw=true) |
+---
+
+
+🛠️ Tech Stack
+
+React Native with Expo Router
+
+Firebase (Auth + Firestore)
+
+React Context API for global theming
+
+
+TypeScript
 
 
 ---
