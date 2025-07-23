@@ -1,9 +1,8 @@
+import { ThemeContext } from '@/context/ThemeContext';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useContext, useState } from 'react';
 import { Button, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
-
-import { ThemeContext } from '@/context/ThemeContext';
 
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
@@ -51,6 +50,36 @@ const Settings = () => {
         />
       </TouchableOpacity>
 
+
+      <TouchableOpacity style={styles.settings} 
+
+      onPress={() => router.push('/legal/Privacy')}>
+
+        <View style={styles.iconLabel}>
+         <Ionicons name="lock-closed" size={24} color={isDark ? 'white' : 'black'} />
+          <Text style={[styles.settingstext, { color: isDark ? 'white' : '#000' }]}>
+            Privacy & Policy
+          </Text>
+        </View>
+      </TouchableOpacity>
+     
+     <TouchableOpacity
+      onPress={() => router.push('/legal/Terms')}>
+
+       
+        <View style={styles.iconLabel}>
+
+
+         <Ionicons name="document-text" size={24} color={isDark ?'white' : 'black'} />
+
+          <Text style={[styles.settingstext, { color: isDark ? 'white' : '#000' }]}>
+            Terms & Conditions
+            
+          </Text>
+          
+        </View>
+      </TouchableOpacity>
+     
       <Button
         title="Logout"
         color="tomato"
